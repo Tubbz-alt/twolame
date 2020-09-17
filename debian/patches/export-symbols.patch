@@ -1,0 +1,14 @@
+Description: Limit exported symbols to functions from twolame.h
+Author: Sebastian Ramacher <sramacher@debian.org>
+Last-Update: 2016-11-09
+
+--- twolame-0.3.13.orig/libtwolame/Makefile.am
++++ twolame-0.3.13/libtwolame/Makefile.am
+@@ -4,6 +4,7 @@ lib_LTLIBRARIES = libtwolame.la
+ include_HEADERS = twolame.h
+ 
+ libtwolame_la_LDFLAGS  = -export-dynamic -version-info @TWOLAME_SO_VERSION@
++libtwolame_la_LDFLAGS += -export-symbols-regex '^twolame_|get_twolame'
+ libtwolame_la_SOURCES = \
+ 	ath.c \
+ 	ath.h \
